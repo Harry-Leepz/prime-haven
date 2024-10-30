@@ -1,9 +1,16 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+
+import { useState } from "react";
 
 import { FaGoogle } from "react-icons/fa";
 
 export default function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProlfileMenuOpen] = useState(false);
+
   return (
     <nav className='bg-slate-900 border-b border-slate-500'>
       <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8'>
@@ -11,6 +18,7 @@ export default function Navbar() {
           <div className='absolute inset-y-0 left-0 flex items-center md:hidden'>
             {/* <!-- Mobile menu button--> */}
             <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               type='button'
               id='mobile-dropdown-button'
               className='relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white'
@@ -119,6 +127,7 @@ export default function Navbar() {
             <div className='relative ml-3'>
               <div>
                 <button
+                  onClick={() => setIsProlfileMenuOpen(!isProfileMenuOpen)}
                   type='button'
                   className='relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
                   id='user-menu-button'
@@ -138,73 +147,76 @@ export default function Navbar() {
               </div>
 
               {/* <!-- Profile dropdown --> */}
-              <div
-                id='user-menu'
-                className='hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
-                role='menu'
-                aria-orientation='vertical'
-                aria-labelledby='user-menu-button'
-                tabIndex='-1'
-              >
-                <Link
-                  href='/profile'
-                  className='block px-4 py-2 text-sm text-gray-700'
-                  role='menuitem'
+              {isProfileMenuOpen && (
+                <div
+                  id='user-menu'
+                  className='absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'
+                  role='menu'
+                  aria-orientation='vertical'
+                  aria-labelledby='user-menu-button'
                   tabIndex='-1'
-                  id='user-menu-item-0'
                 >
-                  Your Profile
-                </Link>
-                <Link
-                  href='/properties/saved'
-                  className='block px-4 py-2 text-sm text-gray-700'
-                  role='menuitem'
-                  tabIndex='-1'
-                  id='user-menu-item-2'
-                >
-                  Saved Properties
-                </Link>
-                <button
-                  className='block px-4 py-2 text-sm text-gray-700'
-                  role='menuitem'
-                  tabIndex='-1'
-                  id='user-menu-item-2'
-                >
-                  Sign Out
-                </button>
-              </div>
+                  <Link
+                    href='/profile'
+                    className='block px-4 py-2 text-sm text-gray-700'
+                    role='menuitem'
+                    tabIndex='-1'
+                    id='user-menu-item-0'
+                  >
+                    Your Profile
+                  </Link>
+                  <Link
+                    href='/properties/saved'
+                    className='block px-4 py-2 text-sm text-gray-700'
+                    role='menuitem'
+                    tabIndex='-1'
+                    id='user-menu-item-2'
+                  >
+                    Saved Properties
+                  </Link>
+                  <button
+                    className='block px-4 py-2 text-sm text-gray-700'
+                    role='menuitem'
+                    tabIndex='-1'
+                    id='user-menu-item-2'
+                  >
+                    Sign Out
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* <!-- Mobile menu, show/hide based on menu state. --> */}
-      <div className='hidden' id='mobile-menu'>
-        <div className='space-y-1 px-2 pb-3 pt-2'>
-          <Link
-            href='/'
-            className='bg-black text-white block rounded-md px-3 py-2 text-base font-medium'
-          >
-            Home
-          </Link>
-          <Link
-            href='/properties'
-            className='text-white block rounded-md px-3 py-2 text-base font-medium'
-          >
-            Properties
-          </Link>
-          <Link
-            href='/properties/add'
-            className='text-white block rounded-md px-3 py-2 text-base font-medium'
-          >
-            Add Property
-          </Link>
-          <button className='flex items-center text-white bg-slate-700 hover:bg-slate-500 hover:text-white rounded-md px-3 py-2 my-5'>
-            <i className='fa-brands fa-google mr-2'></i>
-            <span>Login or Register</span>
-          </button>
+      {isMobileMenuOpen && (
+        <div id='mobile-menu'>
+          <div className='space-y-1 px-2 pb-3 pt-2'>
+            <Link
+              href='/'
+              className='bg-black text-white block rounded-md px-3 py-2 text-base font-medium'
+            >
+              Home
+            </Link>
+            <Link
+              href='/properties'
+              className='text-white block rounded-md px-3 py-2 text-base font-medium'
+            >
+              Properties
+            </Link>
+            <Link
+              href='/properties/add'
+              className='text-white block rounded-md px-3 py-2 text-base font-medium'
+            >
+              Add Property
+            </Link>
+            <button className='flex items-center text-white bg-slate-700 hover:bg-slate-500 hover:text-white rounded-md px-3 py-2 my-5'>
+              <FaGoogle className=' text-white mr-2' />
+              <span>Login or Register</span>
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 }
