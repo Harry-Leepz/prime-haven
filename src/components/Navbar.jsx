@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { FaGoogle } from "react-icons/fa";
+
 export default function Navbar() {
   return (
     <nav className='bg-slate-900 border-b border-slate-500'>
@@ -78,7 +80,7 @@ export default function Navbar() {
           <div className='hidden md:block md:ml-6'>
             <div className='flex items-center'>
               <button className='flex items-center text-white bg-slate-700 hover:bg-slate-600 hover:text-white rounded-md px-3 py-2 transition'>
-                <i className='fa-brands fa-google text-white mr-2'></i>
+                <FaGoogle className=' text-white mr-2' />
                 <span>Login or Register</span>
               </button>
             </div>
