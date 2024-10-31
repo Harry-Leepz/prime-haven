@@ -2,6 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const date = new Date();
+  const currentYear = date.getFullYear();
+
   return (
     <footer className='bg-slate-900 py-4 mt-24'>
       <div className='container mx-auto flex flex-col md:flex-row items-center justify-between px-4'>
@@ -26,7 +29,7 @@ export default function Footer() {
         </div>
         <div>
           <p className='text-sm text-white mt-2 md:mt-0'>
-            &copy; 2024 Prime Haven. All rights reserved.
+            &copy; {currentYear} Prime Haven. All rights reserved.
           </p>
         </div>
       </div>
