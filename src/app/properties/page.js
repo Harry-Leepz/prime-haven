@@ -2,7 +2,6 @@ import PropertyCard from "@/components/layout/PropertyCard";
 import propertiesData from "@/fixtures/properties.json";
 
 export default function PropertiesPage() {
-  console.log(propertiesData);
   return (
     <section className='px-4 py-6'>
       <div className='container-xl lg:container m-auto px-4 py-6'>
