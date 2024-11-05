@@ -6,6 +6,7 @@ import connectDB from "../../../../config/database";
 import Property from "../../../../models/Property";
 
 import PropertyHeaderImage from "@/components/propertyDetails/PropertyHeaderImage";
+import PropertyInformation from "@/components/propertyDetails/PropertyInformation";
 
 export default async function PropertyDetailsPage({ params }) {
   await connectDB();
@@ -27,10 +28,11 @@ export default async function PropertyDetailsPage({ params }) {
         </Link>
       </section>
 
-      <section className='bg-blue-100'>
+      <section className='bg-slate-100'>
         <div className='container m-auto py-10 px-6'>
           <div className='grid grid-cols-1 md:grid-cols-70/30 w-full gap-6'>
             {/* Property Info section goes here */}
+            <PropertyInformation property={property} />
           </div>
         </div>
       </section>
