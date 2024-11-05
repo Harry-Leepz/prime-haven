@@ -1,10 +1,15 @@
 import Link from "next/link";
 
-import PropertyCard from "@/components/layout/PropertyCard";
-import propertiesData from "@/fixtures/properties.json";
+import connectDB from "../../../config/database";
+import Property from "../../../models/Property";
 
-export default function FeaturedPropertiesContainer() {
-  const recentProperties = propertiesData.slice(0, 3);
+import PropertyCard from "@/components/layout/PropertyCard";
+
+export default async function FeaturedPropertiesContainer() {
+  await connectDB();
+  const recentProperties = await Property.find({})
+    .sort({ createdAt: -1 })
+    .limit(3);
 
   return (
     <>
@@ -13,7 +18,6 @@ export default function FeaturedPropertiesContainer() {
           <h2 className='text-3xl font-bold text-slate-700 mb-6 text-center'>
             Recent Properties
           </h2>
-          {propertiesData.length === 0 && <p>No properties found</p>}
           {recentProperties.length > 0 && (
             <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
               {recentProperties.map((property) => (
