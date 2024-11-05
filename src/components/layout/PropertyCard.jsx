@@ -79,7 +79,7 @@ export default function PropertyCard({ property }) {
             </span>
           </div>
           <Link
-            href={`/property/${property._id}`}
+            href={`/properties/${property._id}`}
             className='h-[36px] bg-slate-900 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-center text-sm'
           >
             Details
