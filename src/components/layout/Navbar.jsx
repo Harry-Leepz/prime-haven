@@ -9,10 +9,11 @@ import { usePathname } from "next/navigation";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
 import { FaGoogle } from "react-icons/fa";
-import { set } from "mongoose";
 
 export default function Navbar() {
   const { data: session } = useSession();
+  const image = session?.user?.image;
+  console.log(session);
 
   const [providers, setProviders] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -172,10 +173,10 @@ export default function Navbar() {
                     <span className='absolute -inset-1.5'></span>
                     <span className='sr-only'>Open user menu</span>
                     <Image
-                      width={32}
-                      height={32}
+                      width={40}
+                      height={40}
                       className='h-8 w-8 rounded-full'
-                      src='/images/profile.png'
+                      src={image || "/images/default-profile.jpg"}
                       alt='Default profile Picture'
                     />
                   </button>
