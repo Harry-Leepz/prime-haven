@@ -17,7 +17,7 @@ export default function Navbar() {
 
   const [providers, setProviders] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProfileMenuOpen, setIsProlfileMenuOpen] = useState(false);
+  const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
 
   const pathname = usePathname();
 
@@ -28,6 +28,11 @@ export default function Navbar() {
     };
     setAuthProviders();
   }, []);
+
+  const handleSignOutClick = () => {
+    setIsProfileMenuOpen(false);
+    signOut();
+  };
 
   return (
     <nav className='bg-slate-900 border-b border-slate-500'>
@@ -163,7 +168,7 @@ export default function Navbar() {
               <div className='relative ml-3'>
                 <div>
                   <button
-                    onClick={() => setIsProlfileMenuOpen(!isProfileMenuOpen)}
+                    onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
                     type='button'
                     className='relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800'
                     id='user-menu-button'
@@ -211,6 +216,7 @@ export default function Navbar() {
                       Saved Properties
                     </Link>
                     <button
+                      onClick={handleSignOutClick}
                       className='block px-4 py-2 text-sm text-gray-700'
                       role='menuitem'
                       tabIndex='-1'
