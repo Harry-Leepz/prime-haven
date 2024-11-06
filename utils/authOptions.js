@@ -1,5 +1,7 @@
 import GoogleProvider from "next-auth/providers/google";
 
+// https://next-auth.js.org/getting-started/example
+
 export const authOptions = {
   providers: [
     GoogleProvider({
