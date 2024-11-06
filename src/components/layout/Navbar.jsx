@@ -13,7 +13,6 @@ import { FaGoogle } from "react-icons/fa";
 export default function Navbar() {
   const { data: session } = useSession();
   const image = session?.user?.image;
-  console.log(session);
 
   const [providers, setProviders] = useState(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

@@ -12,8 +12,6 @@ export default async function PropertyDetailsPage({ params }) {
   await connectDB();
   const property = await Property.findById(params.id).lean();
 
-  console.log(property);
-
   return (
     <>
       <PropertyHeaderImage image={property.images[0]} alt={property.name} />
