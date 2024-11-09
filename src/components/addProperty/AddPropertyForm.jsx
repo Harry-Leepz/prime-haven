@@ -1,6 +1,8 @@
+import addProperty from "@/app/actions/AddProperty";
+
 export default function AddPropertyhtmlForm() {
   return (
-    <htmlForm>
+    <form action={addProperty}>
       <h2 className='text-3xl text-center font-semibold mb-6'>Add Property</h2>
 
       <div className='mb-4'>
@@ -338,7 +340,7 @@ export default function AddPropertyhtmlForm() {
         <input
           type='text'
           id='seller_name'
-          name='seller_info.name.'
+          name='seller_info.name'
           className='border rounded w-full py-2 px-3'
           placeholder='Name'
         />
@@ -398,6 +400,6 @@ export default function AddPropertyhtmlForm() {
           Add Property
         </button>
       </div>
-    </htmlForm>
+    </form>
   );
 }
