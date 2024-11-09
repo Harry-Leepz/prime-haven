@@ -3,6 +3,8 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import cloudinary from "../../../config/cloudinary";
+
 import connectDB from "../../../config/database";
 import Property from "../../../models/Property";
 
@@ -19,10 +21,7 @@ const addProperty = async (formData) => {
   const { userId } = user;
 
   const amenities = formData.getAll("amenities");
-  const images = formData
-    .getAll("images")
-    .filter((image) => image.name !== "")
-    .map((image) => image.name);
+  const images = formData.getAll("images").filter((image) => image.name !== "");
 
   const property = {
     owner: userId,
@@ -49,8 +48,26 @@ const addProperty = async (formData) => {
       email: formData.get("seller_info.email"),
       phone: formData.get("seller_info.phone"),
     },
-    images,
   };
+
+  // Upload images to Cloudinary
+  const imageUrls = [];
+  for (const image of images) {
+    const imageBuffer = await image.arrayBuffer();
+    const imageArray = Array.from(new Uint8Array(imageBuffer));
+    const imageData = Buffer.from(imageArray);
+
+    // convert image to base64
+    const base64 = imageData.toString("base64");
+    // make request to cloudinary
+    const result = await cloudinary.uploader.upload(
+      `data:image/png;base64,${base64}`,
+      { folder: "primehaven" }
+    );
+    imageUrls.push(result.secure_url);
+  }
+
+  property.images = imageUrls;
 
   const newProperty = new Property(property);
   await newProperty.save();
