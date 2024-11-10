@@ -6,6 +6,8 @@ import Property from "../../../models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 import ProfileProperties from "@/components/profile/ProfileProperties";
 
+import convertToObject from "@/utils/convertToObject";
+
 export default async function ProfilePage() {
   await connectDB();
 
@@ -15,7 +17,8 @@ export default async function ProfilePage() {
     throw new Error("You need to be logged in to view this page");
   }
 
-  const properties = await Property.find({ user: userId }).lean();
+  const propertiesDocs = await Property.find({ owner: userId }).lean();
+  const properties = propertiesDocs.map(convertToObject);
   console.log(properties);
 
   return (
