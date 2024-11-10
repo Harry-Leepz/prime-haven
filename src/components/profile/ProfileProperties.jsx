@@ -2,12 +2,13 @@
 import { useState } from "react";
 
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ProfileProperties({ properties: initialProperties }) {
   const [properties, setProperties] = useState(initialProperties);
   return properties.map((property) => (
     <div className='mb-10' key={property._id}>
-      <a href='/property.html'>
+      <Link href={`properties/${property._id}`}>
         <Image
           className='h-32 w-full rounded-md object-cover'
           src={property.images[0]}
@@ -15,7 +16,7 @@ export default function ProfileProperties({ properties: initialProperties }) {
           height={800}
           width={800}
         />
-      </a>
+      </Link>
       <div className='mt-2'>
         <p className='text-lg font-semibold'>{property.name}</p>
         <p className='text-gray-600'>
