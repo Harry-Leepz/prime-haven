@@ -1,4 +1,17 @@
 export default function EditPropertyForm({ property }) {
+  const {
+    type,
+    name,
+    description,
+    location,
+    beds,
+    baths,
+    square_feet,
+    amenities,
+    rates,
+    seller_info,
+  } = property;
+
   return (
     <form>
       <h2 className='text-3xl text-center font-semibold mb-6'>Edit Property</h2>
@@ -12,6 +25,7 @@ export default function EditPropertyForm({ property }) {
           name='type'
           className='border rounded w-full py-2 px-3'
           required
+          defaultValue={type}
         >
           <option value='Apartment'>Apartment</option>
           <option value='Condo'>Condo</option>
@@ -33,6 +47,7 @@ export default function EditPropertyForm({ property }) {
           className='border rounded w-full py-2 px-3 mb-2'
           placeholder='eg. Beautiful Apartment In Miami'
           required
+          defaultValue={name}
         />
       </div>
       <div className='mb-4'>
@@ -48,6 +63,7 @@ export default function EditPropertyForm({ property }) {
           className='border rounded w-full py-2 px-3'
           rows='4'
           placeholder='Add an optional description of your property'
+          defaultValue={description}
         ></textarea>
       </div>
 
@@ -59,6 +75,7 @@ export default function EditPropertyForm({ property }) {
           name='location.street'
           className='border rounded w-full py-2 px-3 mb-2'
           placeholder='Street'
+          defaultValue={location.street}
         />
         <input
           type='text'
@@ -67,6 +84,7 @@ export default function EditPropertyForm({ property }) {
           className='border rounded w-full py-2 px-3 mb-2'
           placeholder='City'
           required
+          defaultValue={location.city}
         />
         <input
           type='text'
@@ -75,6 +93,7 @@ export default function EditPropertyForm({ property }) {
           className='border rounded w-full py-2 px-3 mb-2'
           placeholder='State'
           required
+          defaultValue={location.state}
         />
         <input
           type='text'
@@ -82,6 +101,7 @@ export default function EditPropertyForm({ property }) {
           name='location.zipcode'
           className='border rounded w-full py-2 px-3 mb-2'
           placeholder='Zipcode'
+          defaultValue={location.zipcode}
         />
       </div>
 
@@ -96,6 +116,7 @@ export default function EditPropertyForm({ property }) {
             name='beds'
             className='border rounded w-full py-2 px-3'
             required
+            defaultValue={beds}
           />
         </div>
         <div className='w-full sm:w-1/3 px-2'>
@@ -108,6 +129,7 @@ export default function EditPropertyForm({ property }) {
             name='baths'
             className='border rounded w-full py-2 px-3'
             required
+            defaultValue={baths}
           />
         </div>
         <div className='w-full sm:w-1/3 pl-2'>
@@ -123,6 +145,7 @@ export default function EditPropertyForm({ property }) {
             name='square_feet'
             className='border rounded w-full py-2 px-3'
             required
+            defaultValue={square_feet}
           />
         </div>
       </div>
@@ -137,6 +160,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Wifi'
               className='mr-2'
+              defaultChecked={amenities.includes("Wifi")}
             />
             <label htmlFor='amenity_wifi'>Wifi</label>
           </div>
@@ -147,6 +171,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Full kitchen'
               className='mr-2'
+              defaultChecked={amenities.includes("Full kitchen")}
             />
             <label htmlFor='amenity_kitchen'>Full kitchen</label>
           </div>
@@ -157,6 +182,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Washer & Dryer'
               className='mr-2'
+              defaultChecked={amenities.includes("Washer & Dryer")}
             />
             <label htmlFor='amenity_washer_dryer'>Washer & Dryer</label>
           </div>
@@ -167,6 +193,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Free Parking'
               className='mr-2'
+              defaultChecked={amenities.includes("Free Parking")}
             />
             <label htmlFor='amenity_free_parking'>Free Parking</label>
           </div>
@@ -177,6 +204,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Swimming Pool'
               className='mr-2'
+              defaultChecked={amenities.includes("Swimming Pool")}
             />
             <label htmlFor='amenity_pool'>Swimming Pool</label>
           </div>
@@ -187,6 +215,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Hot Tub'
               className='mr-2'
+              defaultChecked={amenities.includes("Hot Tub")}
             />
             <label htmlFor='amenity_hot_tub'>Hot Tub</label>
           </div>
@@ -197,6 +226,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='24/7 Security'
               className='mr-2'
+              defaultChecked={amenities.includes("24/7 Security")}
             />
             <label htmlFor='amenity_24_7_security'>24/7 Security</label>
           </div>
@@ -207,6 +237,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Wheelchair Accessible'
               className='mr-2'
+              defaultChecked={amenities.includes("Wheelchair Accessible")}
             />
             <label htmlFor='amenity_wheelchair_accessible'>
               Wheelchair Accessible
@@ -219,6 +250,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Elevator Access'
               className='mr-2'
+              defaultChecked={amenities.includes("Elevator Access")}
             />
             <label htmlFor='amenity_elevator_access'>Elevator Access</label>
           </div>
@@ -229,6 +261,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Dishwasher'
               className='mr-2'
+              defaultChecked={amenities.includes("Dishwasher")}
             />
             <label htmlFor='amenity_dishwasher'>Dishwasher</label>
           </div>
@@ -239,6 +272,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Gym/Fitness Center'
               className='mr-2'
+              defaultChecked={amenities.includes("Gym/Fitness Center")}
             />
             <label htmlFor='amenity_gym_fitness_center'>
               Gym/Fitness Center
@@ -251,6 +285,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Air Conditioning'
               className='mr-2'
+              defaultChecked={amenities.includes("Air Conditioning")}
             />
             <label htmlFor='amenity_air_conditioning'>Air Conditioning</label>
           </div>
@@ -261,6 +296,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Balcony/Patio'
               className='mr-2'
+              defaultChecked={amenities.includes("Balcony/Patio")}
             />
             <label htmlFor='amenity_balcony_patio'>Balcony/Patio</label>
           </div>
@@ -271,6 +307,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Smart TV'
               className='mr-2'
+              defaultChecked={amenities.includes("Smart TV")}
             />
             <label htmlFor='amenity_smart_tv'>Smart TV</label>
           </div>
@@ -281,6 +318,7 @@ export default function EditPropertyForm({ property }) {
               name='amenities'
               value='Coffee Maker'
               className='mr-2'
+              defaultChecked={amenities.includes("Coffee Maker")}
             />
             <label htmlFor='amenity_coffee_maker'>Coffee Maker</label>
           </div>
@@ -301,6 +339,7 @@ export default function EditPropertyForm({ property }) {
               id='weekly_rate'
               name='rates.weekly'
               className='border rounded w-full py-2 px-3'
+              defaultValue={rates.weekly}
             />
           </div>
           <div className='flex items-center'>
@@ -312,6 +351,7 @@ export default function EditPropertyForm({ property }) {
               id='monthly_rate'
               name='rates.monthly'
               className='border rounded w-full py-2 px-3'
+              defaultValue={rates.monthly}
             />
           </div>
           <div className='flex items-center'>
@@ -323,6 +363,7 @@ export default function EditPropertyForm({ property }) {
               id='nightly_rate'
               name='rates.nightly'
               className='border rounded w-full py-2 px-3'
+              defaultValue={rates.nightly}
             />
           </div>
         </div>
@@ -341,6 +382,8 @@ export default function EditPropertyForm({ property }) {
           name='seller_info.name'
           className='border rounded w-full py-2 px-3'
           placeholder='Name'
+          required
+          defaultValue={seller_info.name}
         />
       </div>
       <div className='mb-4'>
@@ -357,6 +400,7 @@ export default function EditPropertyForm({ property }) {
           className='border rounded w-full py-2 px-3'
           placeholder='Email address'
           required
+          defaultValue={seller_info.email}
         />
       </div>
       <div className='mb-4'>
@@ -372,6 +416,8 @@ export default function EditPropertyForm({ property }) {
           name='seller_info.phone'
           className='border rounded w-full py-2 px-3'
           placeholder='Phone'
+          required
+          defaultValue={seller_info.phone}
         />
       </div>
 
