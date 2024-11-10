@@ -7,6 +7,7 @@ import Property from "../../../../models/Property";
 
 import PropertyHeaderImage from "@/components/propertyDetails/PropertyHeaderImage";
 import PropertyInformation from "@/components/propertyDetails/PropertyInformation";
+import PropertyImages from "@/components/propertyDetails/PropertyImages";
 
 export default async function PropertyDetailsPage({ params }) {
   await connectDB();
@@ -34,6 +35,7 @@ export default async function PropertyDetailsPage({ params }) {
           </div>
         </div>
       </section>
+      <PropertyImages images={property.images} />
     </>
   );
 }
