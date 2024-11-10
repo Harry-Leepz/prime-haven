@@ -9,9 +9,21 @@ import PropertyHeaderImage from "@/components/propertyDetails/PropertyHeaderImag
 import PropertyInformation from "@/components/propertyDetails/PropertyInformation";
 import PropertyImages from "@/components/propertyDetails/PropertyImages";
 
+import convertToObject from "@/utils/convertToObject";
+
 export default async function PropertyDetailsPage({ params }) {
   await connectDB();
-  const property = await Property.findById(params.id).lean();
+
+  const propertyDocs = await Property.findById(params.id).lean();
+  const property = convertToObject(propertyDocs);
+
+  if (!property) {
+    return (
+      <h1 className='text-center text-2xl font-bold mt-10'>
+        Property not found
+      </h1>
+    );
+  }
 
   return (
     <>
