@@ -19,7 +19,6 @@ export default async function ProfilePage() {
 
   const propertiesDocs = await Property.find({ owner: userId }).lean();
   const properties = propertiesDocs.map(convertToObject);
-  console.log(properties);
 
   return (
     <section className='bg-slate-100 min-h-[83vh]'>
