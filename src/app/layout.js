@@ -4,6 +4,10 @@ import AuthProvider from "@/components/auth/AuthProvider";
 
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -22,11 +26,10 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang='en' className={inter.className}>
         <body>
-          <main>
-            <Navbar />
-            {children}
-            <Footer />
-          </main>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <ToastContainer />
         </body>
       </html>
     </AuthProvider>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { toast } from "react-toastify";
+
 import deleteProperty from "@/app/actions/deleteProperty";
 
 export default function ProfileProperties({ properties: initialProperties }) {
@@ -13,14 +15,15 @@ export default function ProfileProperties({ properties: initialProperties }) {
     const confirm = window.confirm(
       "Are you sure you want to delete this property?"
     );
-    if (!confirm) {
-      return;
-    }
+    if (!confirm) return;
+
     await deleteProperty(propertyId);
     const updatedProperties = properties.filter(
       (property) => property._id !== propertyId
     );
     setProperties(updatedProperties);
+
+    toast.success("Property deleted successfully");
   };
 
   return properties.map((property) => (
