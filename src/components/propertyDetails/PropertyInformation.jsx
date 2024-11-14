@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic";
+
 import {
   FaBath,
   FaBed,
@@ -7,7 +9,9 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
-import PropertyMap from "./PropertyMap";
+const PropertyMap = dynamic(() => import("./PropertyMap"), {
+  ssr: false,
+});
 
 export default function PropertyInformation({ property }) {
   const {
