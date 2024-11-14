@@ -7,6 +7,8 @@ import {
   FaTimes,
 } from "react-icons/fa";
 
+import PropertyMap from "./PropertyMap";
+
 export default function PropertyInformation({ property }) {
   const {
     type,
@@ -108,7 +110,7 @@ export default function PropertyInformation({ property }) {
       </div>
 
       <div className='bg-white p-6 rounded-lg shadow-md mt-6'>
-        <div id='map'>Map feature coming soon! Check back later.</div>
+        <PropertyMap property={property} />
       </div>
     </main>
   );
