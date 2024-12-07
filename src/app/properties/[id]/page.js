@@ -48,9 +48,9 @@ export default async function PropertyDetailsPage({ params }) {
             {/* Property Info section goes here */}
             <PropertyInformation property={property} />
             <aside className='space-y-4'>
-              <BookmarkButton />
-              <SocialShareButtons />
-              <MessagingForm />
+              <BookmarkButton property={property} />
+              <SocialShareButtons property={property} />
+              <MessagingForm property={property} />
             </aside>
           </div>
         </div>
