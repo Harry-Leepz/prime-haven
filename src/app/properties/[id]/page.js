@@ -8,8 +8,11 @@ import Property from "../../../../models/Property";
 import PropertyHeaderImage from "@/components/propertyDetails/PropertyHeaderImage";
 import PropertyInformation from "@/components/propertyDetails/PropertyInformation";
 import PropertyImages from "@/components/propertyDetails/PropertyImages";
+import BookmarkButton from "@/components/bookmarks/BookmarkButton";
+import SocialShareButtons from "@/components/social-share/SocialShareButtons";
 
 import convertToObject from "@/utils/convertToObject";
+import MessagingForm from "@/components/messages/MessagingForm";
 
 export default async function PropertyDetailsPage({ params }) {
   await connectDB();
@@ -44,6 +47,11 @@ export default async function PropertyDetailsPage({ params }) {
           <div className='grid grid-cols-1 md:grid-cols-70/30 w-full gap-6'>
             {/* Property Info section goes here */}
             <PropertyInformation property={property} />
+            <aside className='space-y-4'>
+              <BookmarkButton />
+              <SocialShareButtons />
+              <MessagingForm />
+            </aside>
           </div>
         </div>
       </section>
