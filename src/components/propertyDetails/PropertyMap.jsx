@@ -12,8 +12,6 @@ const PropertyMap = ({ property }) => {
   const map = useRef(null);
 
   useEffect(() => {
-    console.log(process.env.NEXT_PUBLIC_OPENCAGE_API_KEY);
-    console.log(process.env.NEXT_PUBLIC_MAPTILER_API_KEY);
     const getCoords = () => {
       opencage
         .geocode({
@@ -23,7 +21,6 @@ const PropertyMap = ({ property }) => {
         .then((data) => {
           if (data.results.length > 0) {
             const place = data.results[0];
-            console.log(place);
           } else {
             console.log("status", data.status.message);
             console.log("total_results", data.total_results);
