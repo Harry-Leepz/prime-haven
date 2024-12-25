@@ -13,7 +13,6 @@ import { FaArrowLeft } from "react-icons/fa";
 export default async function SearchResultsPage({
   searchParams: { location, type },
 }) {
-  console.log(location, type);
   await connectDB();
 
   const locationRegex = new RegExp(location, "i");
