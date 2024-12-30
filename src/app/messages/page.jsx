@@ -6,6 +6,7 @@ import Property from "../../../models/Property";
 import { getSessionUser } from "@/utils/getSessionUser";
 
 import convertToObject from "@/utils/convertToObject";
+import MessageCard from "@/components/messages/MessageCard";
 
 export default async function MessagesPage() {
   await connectDB();
@@ -34,7 +35,7 @@ export default async function MessagesPage() {
   });
 
   return (
-    <section className='bg-slate-100 '>
+    <section className='bg-slate-100 min-h-[80.5vh]'>
       <div className='container m-auto py-24 max-w-6xl'>
         <div className='bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0'>
           <h1 className='text-3xl font-bold mb-4'>Your Messages</h1>
@@ -43,7 +44,7 @@ export default async function MessagesPage() {
               <p className='text-center text-xl'>No messages found.</p>
             )}
             {allMessages.map((message) => (
-              <h3 key={message._id}>{message.name}</h3>
+              <MessageCard key={message._id} message={message} />
             ))}
           </div>
         </div>
