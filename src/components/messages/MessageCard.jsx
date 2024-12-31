@@ -49,7 +49,9 @@ export default function MessageCard({ message }) {
         </li>
         <li>
           <strong>Received: </strong>
-          {new Date(message.createdAt).toLocaleString()}
+          {new Date(message.createdAt).toLocaleString("en-GB", {
+            timeZone: "UTC",
+          })}
         </li>
       </ul>
 
