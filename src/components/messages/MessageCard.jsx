@@ -7,17 +7,25 @@ import { toast } from "react-toastify";
 import markMessageAsRead from "@/app/actions/markMessageAsRead";
 import deleteMessage from "@/app/actions/deleteMessage";
 
+import { useMessageContext } from "@/context/MessageContext";
+
 export default function MessageCard({ message }) {
   const [isRead, setIsRead] = useState(message.read);
+
+  const { setUnreadMessageCount } = useMessageContext();
 
   const handleReadClick = async () => {
     const read = await markMessageAsRead(message._id);
     setIsRead(read);
+    setUnreadMessageCount((prevCount) =>
+      read ? prevCount - 1 : prevCount + 1
+    );
     toast.success(`Message marked as ${read ? "read" : "unread"}`);
   };
 
   const handleDeleteClick = async () => {
     await deleteMessage(message._id);
+    setUnreadMessageCount((prevCount) => (isRead ? prevCount : prevCount - 1));
     toast.success("Message Deleted Successfully");
   };
 
