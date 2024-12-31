@@ -10,6 +10,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 import "./globals.css";
 
+import { MessageProvider } from "@/context/MessageContext";
+
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -24,14 +26,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <AuthProvider>
-      <html lang='en' className={inter.className}>
-        <body>
-          <Navbar />
-          <main>{children}</main>
-          <Footer />
-          <ToastContainer />
-        </body>
-      </html>
+      <MessageProvider>
+        <html lang='en' className={inter.className}>
+          <body>
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <ToastContainer />
+          </body>
+        </html>
+      </MessageProvider>
     </AuthProvider>
   );
 }
