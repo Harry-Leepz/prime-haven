@@ -22,7 +22,5 @@ export default async function getUnreadMessageCount() {
     read: false,
   });
 
-  console.log("count", count);
-
   return count;
 }
