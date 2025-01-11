@@ -5,7 +5,7 @@ import Property from "../../../models/Property";
 
 import PropertyCard from "@/components/layout/PropertyCard";
 
-export default async function FeaturedPropertiesContainer() {
+export default async function HomeProperties() {
   await connectDB();
   const recentProperties = await Property.find({})
     .sort({ createdAt: -1 })
