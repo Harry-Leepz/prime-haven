@@ -16,7 +16,6 @@ export function MessageProvider({ children }) {
   useEffect(() => {
     if (session && session.user) {
       getUnreadMessageCount(session.userId).then((count) => {
-        console.log("count", count);
         setUnreadMessageCount(count);
       });
     }

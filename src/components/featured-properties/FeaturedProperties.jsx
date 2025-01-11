@@ -51,7 +51,6 @@ function FeaturedPropertyCard({ property }) {
     .filter((rate) => property.rates[rate] !== null)
     .map((rate) => rate.charAt(0).toUpperCase() + rate.slice(1));
 
-  console.log(arrayOfAvailableRates);
   return (
     <div className='bg-white rounded-xl shadow-md relative flex flex-col md:flex-row'>
       <Image
