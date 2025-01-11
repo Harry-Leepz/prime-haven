@@ -1,13 +1,15 @@
 import Hero from "@/components/home/Hero";
 import InfoBoxContianer from "@/components/home/InfoBoxContainer";
-import FeaturedPropertiesContainer from "@/components/home/FeaturedPropertiesContainer";
+import HomeProperties from "@/components/home/HomeProperties";
+import FeaturedProperties from "@/components/featured-properties/FeaturedProperties";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
       <InfoBoxContianer />
-      <FeaturedPropertiesContainer />
+      <FeaturedProperties />
+      <HomeProperties />
     </>
   );
 }
