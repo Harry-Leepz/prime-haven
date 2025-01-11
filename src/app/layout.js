@@ -7,6 +7,7 @@ import Footer from "@/components/layout/Footer";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "photoswipe/dist/photoswipe.css";
 
 import "./globals.css";
 
