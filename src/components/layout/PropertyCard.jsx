@@ -23,9 +23,9 @@ export default function PropertyCard({ property }) {
     }
   };
 
-  const arrayOfAvailableRates = Object.keys(rates).map((rate) => {
-    return rate.charAt(0).toUpperCase() + rate.slice(1);
-  });
+  const arrayOfAvailableRates = Object.keys(rates)
+    .filter((rate) => rates[rate] !== null)
+    .map((rate) => rate.charAt(0).toUpperCase() + rate.slice(1));
 
   return (
     <div className='rounded-xl shadow-md relative'>
